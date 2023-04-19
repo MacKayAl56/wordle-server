@@ -19,7 +19,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 let wordList: Array<string> = [];
-const wordsFilePath = path.join(__dirname, "./wordles.txt");
+const wordsFilePath = path.join(__dirname, "../wordles.txt");
 
 fs.readFile(wordsFilePath, "utf-8", (err, data) => {
   if (err) {
@@ -30,7 +30,7 @@ fs.readFile(wordsFilePath, "utf-8", (err, data) => {
 });
 
 // Define GET endpoint(s)
-app.get("/", (req: Request, res: Response) => {
+app.get("/random-word", (req: Request, res: Response) => {
   const randomIndex = Math.floor(Math.random() * wordList.length);
   const randomWord = wordList[randomIndex];
   const secretWord = { secret: randomWord };
